@@ -21,7 +21,7 @@
 
 ## Download data
 All datasets involved in the experiment can be obtained from the following source:
-* [PBMC multi-omics dataset](https://www.10xgenomics.com/datasets/pbmc-from-a-healthy-donor-granulocytes-removed-through-cell-sorting-10-k-1-standard-1-0-0.)
+* [PBMC multi-omics dataset](https://www.10xgenomics.com/datasets/pbmc-from-a-healthy-donor-granulocytes-removed-through-cell-sorting-10-k-1-standard-1-0-0)
 * [COVID-19 immune response dataset](https://www.ebi.ac.uk/gxa/sc/experiments/E-MTAB-9221/downloads)
 * [Lung cancer pleural effusion dataset](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE131907)
 * [Human pancreas data](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE84133)
