@@ -18,3 +18,15 @@
 [![gseapy](https://img.shields.io/badge/gseapy-V1.1.12-important?style=flat)](https://pypi.org/project/gseapy/1.1.12/)
 [![networkx](https://img.shields.io/badge/networkx-V3.3-blue?style=flat)](https://pypi.org/project/networkx/3.3/)
 [![torch](https://img.shields.io/badge/torch-V2.7.1-red?style=flat)](https://pypi.org/project/torch/2.7.1/)
+
+## Download data
+All datasets involved in the experiment can be obtained from the following source:
+* [PBMC multi-omics dataset](https://www.10xgenomics.com/datasets/pbmc-from-a-healthy-donor-granulocytes-removed-through-cell-sorting-10-k-1-standard-1-0-0.)
+* [COVID-19 immune response dataset](https://www.ebi.ac.uk/gxa/sc/experiments/E-MTAB-9221/downloads)
+* [Lung cancer pleural effusion dataset](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE131907)
+* [Human pancreas data](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE84133)
+* [Human bone marrow data](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE194122)
+
+## Tutorials
+We provide a simple example demonstrating how to use TMCells. If you encounter any issues during the process, feel free to contact us.  
+[TMCells Tutorial](https://github.com/Jinsl-lab/TMCells/blob/main/tutorial/example.ipynb)
