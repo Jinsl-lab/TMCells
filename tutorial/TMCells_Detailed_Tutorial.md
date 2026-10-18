@@ -34,7 +34,7 @@ Run the following Python examples from the repository root. **The current reposi
 
 ## 2. Input data and preprocessing
 
-TMCells takes an `AnnData` object with a non-negative **cells × features** count matrix in `adata.X`. Reference cell-type labels are optional and are not used for model training. Provide a quality-controlled dataset appropriate for your assay. No extra normalization, log transformation, feature selection, or PCA is required before training.
+TMCells takes an `AnnData` object with a non-negative **cells × features** count matrix in `adata.X`. Reference cell-type labels are optional and are not used for model training. The input dataset should undergo appropriate assay-specific quality control.
 
 ```python
 from pathlib import Path
@@ -116,7 +116,7 @@ The results are stored in `adata.obs['TMCells']` (hard assignments), `adata.obsm
 
 | Parameter | Example | Description |
 |---|---:|---|
-| `n_metacells` | 115 | Number of Gaussian mixture components; some may be empty |
+| `n_metacells` | 115 | Number of Gaussian mixture components |
 | `n_topics` | 15 | Number of latent topics (model default: 15) |
 | `batch_size` | 512 | Training or inference batch size |
 | `n_epochs` | 200 | Maximum number of training epochs in this example |
@@ -124,7 +124,7 @@ The results are stored in `adata.obs['TMCells']` (hard assignments), `adata.obsm
 | `t_warmup` | 50 | Number of epochs for linear KL-weight warm-up |
 | `seed` | 42 | Random seed |
 
-Choose `n_metacells` according to dataset size and desired resolution. Adjust `batch_size` for available memory. The library defaults may differ from the example values. Record the selected settings when reporting results.
+Choose `n_metacells` according to dataset size and desired resolution. Adjust `batch_size` for available memory.
 
 ## 6. Downstream analysis
 
@@ -197,7 +197,7 @@ if CELLTYPE_KEY is not None:
 
 Purity measures agreement with **existing annotations** and is not de novo cell-type identification.
 
-### 6.4 Leiden clustering (resolution = 1)
+### 6.4 Unsupervised clustering of metacells
 
 ```python
 # Normalization is applied only to the aggregated metacell copy.
@@ -219,22 +219,12 @@ adata.obs['leiden_r1_metacell'] = (
 )
 ```
 
-With reference annotations, clustering agreement can be evaluated using AMI and ARI:
-
-```python
-if CELLTYPE_KEY is not None:
-    from sklearn.metrics import adjusted_mutual_info_score, adjusted_rand_score
-    truth = adata.obs[CELLTYPE_KEY].astype(str)
-    clusters = adata.obs['leiden_r1_metacell'].astype(str)
-    ami = adjusted_mutual_info_score(truth, clusters)
-    ari = adjusted_rand_score(truth, clusters)
-```
 
 ### 6.5 Marker-gene expression (scRNA-seq example)
 
 ```python
 if CELLTYPE_KEY is not None and 'cell_type' in mc_down.obs:
-    genes = [g for g in ['INS', 'GCG', 'SST', 'PPY'] if g in mc_down.var_names]
+    genes = [g for g in ['INS', 'IAPP', 'GHRL'] if g in mc_down.var_names]
     if genes:
         sc.pl.dotplot(mc_down, var_names=genes, groupby='cell_type')
 ```
@@ -243,8 +233,7 @@ Replace these example genes with markers for your dataset. For scATAC-seq, use a
 
 ## Notes
 
-- The notebook and Markdown documentation do **not** need embedded training logs or saved figures. Code produces results when executed.
 - Training uses the untransformed input matrix. Normalization in Section 6.4 applies **only to downstream metacell analysis**.
-- For reproducibility, report the dataset, code version, random seed, and parameter settings.
+- Report the dataset, code version, random seed, and parameter settings.
 
 Source code: [TMCells](https://github.com/Jinsl-lab/TMCells) · [metacell evaluation](https://github.com/Jinsl-lab/TMCells/blob/main/TMCells/metacell_eval.py) · [visualization](https://github.com/Jinsl-lab/TMCells/blob/main/TMCells/metacell_plot.py).
