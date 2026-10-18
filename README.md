@@ -27,3 +27,5 @@ All datasets involved in the experiment can be obtained from the following sourc
 ## Tutorials
 We provide a simple example demonstrating how to use TMCells. If you encounter any issues during the process, feel free to contact us.  
 [TMCells Tutorial](https://github.com/Jinsl-lab/TMCells/blob/main/tutorial/example.ipynb)
+- [Quick Start](https://github.com/Jinsl-lab/TMCells/blob/main/tutorial/TMCells_QuickStart.ipynb): A concise example of the TMCells workflow.
+- [Detailed Tutorial](https://github.com/Jinsl-lab/TMCells/blob/main/tutorial/TMCells_Detailed_Tutorial.md): A detailed guide to using TMCells.
